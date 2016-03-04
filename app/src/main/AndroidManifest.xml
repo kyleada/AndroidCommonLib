@@ -18,7 +18,7 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name="com.kyle.TabActivity"></activity>
+        <activity android:name="com.kyle.tab.TabActivity"></activity>
     </application>
 
 </manifest>
