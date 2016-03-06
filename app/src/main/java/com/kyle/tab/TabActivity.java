@@ -6,13 +6,16 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import butterknife.Bind;
+
 import com.flyco.tablayout.CommonTabLayout;
 import com.flyco.tablayout.listener.CustomTabEntity;
 import com.flyco.tablayout.listener.OnTabSelectListener;
 import com.kyle.common.R;
 import com.kyle.commonlib.base.BaseActivity;
+
 import java.util.ArrayList;
+
+import butterknife.Bind;
 
 public class TabActivity extends BaseActivity {
 
@@ -37,12 +40,17 @@ public class TabActivity extends BaseActivity {
     @Bind(R.id.tabbar)
     CommonTabLayout mTabLayout;
 
-    @Override protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tab);
+    @Override
+    protected int getLayoutId() {
+        return R.layout.tab_activity_tab;
+    }
+
+    @Override
+    protected void afterCreate(Bundle savedInstanceState) {
         initFragmentAndVp();
         initTabLayout();
     }
+
 
     private void initFragmentAndVp(){
         for (String title : mTitles) {

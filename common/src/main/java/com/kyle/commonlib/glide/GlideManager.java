@@ -24,7 +24,7 @@ public class GlideManager {
 
     public static void initConfig(Context context){
 
-        Glide.get(context).register(GlideUrl.class, InputStream.class,new OkHttpUrlLoader.Factory(OkHttpManager.getInstance(context).getOkHttpClient()));
+        Glide.get(context).register(GlideUrl.class, InputStream.class, new OkHttpUrlLoader.Factory(OkHttpManager.getInstance().getOkHttpClient()));
     }
 
 }

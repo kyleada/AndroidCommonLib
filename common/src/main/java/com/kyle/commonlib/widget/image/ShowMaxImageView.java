@@ -1,4 +1,4 @@
-package com.kyle.commonlib.widget;
+package com.kyle.commonlib.widget.image;
 
 import android.app.Activity;
 import android.content.Context;

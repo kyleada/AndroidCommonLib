@@ -1,7 +1,9 @@
 package com.kyle.commonlib.net;
 
 import android.content.Context;
+
 import com.google.gson.Gson;
+
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -17,7 +19,7 @@ public class RetrofitManager {
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(baseUrl)
-                .client(OkHttpManager.getInstance(context).getOkHttpClient())
+                .client(OkHttpManager.getInstance().getOkHttpClient())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create(new Gson()))
                 .build();

@@ -3,4 +3,15 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+    <!--ZhihuDailyPRD start-->
+    <color name="color_divider">#eeeeee</color>
+    <color name="color_list_item_pressed">@color/colorPrimary</color>
+    <color name="color_list_item_normal">#fff</color>
+    <color name="color_list_Item_text_pressed">#fff</color>
+    <color name="color_list_Item_text_normal">#454545</color>
+    <color name="color_source">#a1ffffff</color>
+    <!--ZhihuDailyPRD end-->
+
+
 </resources>

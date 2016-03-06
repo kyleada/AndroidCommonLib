@@ -7,15 +7,22 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+
 import com.kyle.common.R;
 import com.kyle.commonlib.base.BaseActivity;
 import com.kyle.tab.TabActivity;
+import com.kyle.zhihuDailyPRD.ui.Activity.ZhihuHomeActivity;
 
 public class MainActivity extends BaseActivity {
 
-    @Override protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+
+    @Override
+    protected int getLayoutId() {
+        return R.layout.activity_main;
+    }
+
+    @Override
+    protected void afterCreate(Bundle savedInstanceState) {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -50,5 +57,9 @@ public class MainActivity extends BaseActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void onClickToZhihuDaily(View view) {
+        startActivityClass(ZhihuHomeActivity.class);
     }
 }

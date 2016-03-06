@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
 import com.kyle.common.R;
 
 @SuppressLint("ValidFragment")
@@ -26,7 +27,7 @@ public class SimpleCardFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fr_simple_card, null); //此处必须为null
+        View v = inflater.inflate(R.layout.tab_fr_simple_card, null); //此处必须为null
         TextView card_title_tv = (TextView) v.findViewById(R.id.card_title_tv);
         card_title_tv.setText(mTitle);
 

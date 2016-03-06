@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.neenbedankt.android-apt'
 
 android {
     compileSdkVersion 23
@@ -11,21 +12,89 @@ android {
         versionCode 1
         versionName "1.0"
     }
+
+    signingConfigs {
+        release {
+            storeFile file("D:/android/keystores/wangkai.jks")
+            storePassword KEYSTORE_PASSWORD
+            keyAlias KEY_ALIAS
+            keyPassword KEY_PASSWORD
+        }
+
+    }
+
     buildTypes {
         release {
             minifyEnabled false
+            zipAlignEnabled false//优化
+            shrinkResources false//去除无用资源
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+
+        debug {
+            signingConfig signingConfigs.release
         }
     }
 }
 
 dependencies {
+
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    testCompile 'junit:junit:4.12'
+    //Test
+    def test = parent.ext.test
+    testCompile test.junit
+
+    //Dependencies
+    def libs = parent.ext.libs
+    provided libs.javaxAnnotation
+    provided libs.supportAnnotation
+    apt libs.daggerCompiler
+
+    //support
+    compile libs.appcompat
+    compile libs.recyclerView
+    compile libs.supportDesign
+    compile libs.cardView
+
+    //image loader
+    compile libs.picasso
+    compile libs.nineOld
+
+    //image slider
+
+    compile libs.imageSlider
+
+    //inject
+    compile libs.dagger
+    compile libs.butterKnife
+
+    //json
+    compile libs.gson
+    compile libs.retrofitWithGson
+
+    //retrofit
+    compile libs.retrofit
+    compile libs.retrofitWithRxJava
+
+    //okHttp
+    compile libs.okHttpLogInterceptor
+
+    //rxJava
+    compile libs.rxJava
+    compile libs.rxAndroid
+    compile libs.rxBinding
+    compile libs.rxLifecycle
+    compile libs.rxComponent
+
+    compile libs.circleImage
+
+    compile libs.jodaTime
+
+    //TabActivity
+    compile libs.flycoTabLayout_Lib
+    //我的common库
     compile project(':common')
-    compile 'com.android.support:appcompat-v7:23.1.1'
-    compile 'com.android.support:design:23.1.1'
-    compile 'com.nineoldandroids:library:2.4.0'
-    compile 'com.flyco.tablayout:FlycoTabLayout_Lib:2.0.0@aar'
+
 
 }

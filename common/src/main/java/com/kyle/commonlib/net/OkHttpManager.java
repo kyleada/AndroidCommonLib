@@ -2,8 +2,11 @@ package com.kyle.commonlib.net;
 
 import android.content.Context;
 import android.os.Build;
+import android.util.Log;
 
 import com.kyle.commonlib.BuildConfig;
+import com.kyle.commonlib.base.AppContextUtil;
+import com.kyle.commonlib.utils.NetUtils;
 
 import java.io.File;
 import java.io.IOException;
@@ -13,6 +16,7 @@ import java.util.concurrent.TimeUnit;
 
 import okhttp3.Authenticator;
 import okhttp3.Cache;
+import okhttp3.CacheControl;
 import okhttp3.Cookie;
 import okhttp3.CookieJar;
 import okhttp3.HttpUrl;
@@ -32,6 +36,8 @@ import okhttp3.logging.HttpLoggingInterceptor;
  */
 public class OkHttpManager {
 
+    private static final String TAG = "OkHttpManager";
+
     /*
      * 采用静态内部类形式实现线程安全的懒汉式单例模式
      */
@@ -39,6 +45,11 @@ public class OkHttpManager {
     private static  Context context;// 一定要是AppContext
     private static class SingletonHolder{
         private static final OkHttpManager INSTANCE = new OkHttpManager(context);
+    }
+
+    public static final OkHttpManager getInstance() {
+        context = AppContextUtil.getInstance();
+        return SingletonHolder.INSTANCE;
     }
 
     public static final OkHttpManager getInstance(Context appcontext){
@@ -52,11 +63,14 @@ public class OkHttpManager {
 
 
 
+
     public OkHttpClient getOkHttpClient(){
         return okHttpClient;
     }
 
+
     private OkHttpManager(Context context) {
+
         if (okHttpClient == null) {
             HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
 
@@ -86,11 +100,13 @@ public class OkHttpManager {
              *构建
              */
             okHttpClient = new OkHttpClient.Builder()
-                    .addInterceptor(loggingInterceptor)
+
                     .retryOnConnectionFailure(true)
                     .readTimeout(NetCommon.HTTP_READ_TIMEOUT,TimeUnit.SECONDS)
                     .writeTimeout(NetCommon.HTTP_WRITE_TIMEOUT,TimeUnit.SECONDS)
                     .connectTimeout(NetCommon.HTTP_CONNECTION_TIMEOUT, TimeUnit.SECONDS)
+                    .addInterceptor(loggingInterceptor)
+                    .addInterceptor(new NoNetLoadFromCacheInterceptor())
                     .addNetworkInterceptor(new TokenInterceptor())
                     .addNetworkInterceptor(new UserAgentInterceptor())
                     .cookieJar(new CookieJar() {
@@ -138,6 +154,22 @@ public class OkHttpManager {
     private boolean alreadyHasAuthorizationHeader(Request originalRequest) {
 
         return false;
+    }
+
+
+    private static class NoNetLoadFromCacheInterceptor implements Interceptor {
+        @Override
+        public Response intercept(Chain chain) throws IOException {
+            Request request = chain.request();
+            if (!NetUtils.isNetworkConnected()) {//判断网络连接状况
+
+                request = request.newBuilder()
+                        .cacheControl(CacheControl.FORCE_CACHE)//无网络时只从缓存中读取
+                        .build();
+                Log.i(TAG, "intercept: NoNetLoadFromCacheInterceptor : FORCE_CACHE");
+            }
+            return chain.proceed(request);
+        }
     }
 
 

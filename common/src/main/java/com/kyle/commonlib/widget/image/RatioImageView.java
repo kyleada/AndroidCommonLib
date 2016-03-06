@@ -3,7 +3,7 @@
  * All Rights Reserved.
  */
 
-package com.kyle.commonlib.widget;
+package com.kyle.commonlib.widget.image;
 
 import android.annotation.TargetApi;
 import android.content.Context;

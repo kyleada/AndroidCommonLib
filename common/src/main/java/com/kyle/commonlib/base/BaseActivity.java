@@ -2,19 +2,26 @@ package com.kyle.commonlib.base;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.annotation.LayoutRes;
 import android.support.v7.app.AppCompatActivity;
+
 import butterknife.ButterKnife;
 
 /**
  * Created by kw on 2016/3/1.
  */
-public class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity extends AppCompatActivity {
+
+    protected abstract int getLayoutId();
+
+    protected abstract void afterCreate(Bundle savedInstanceState);
+
 
     @Override
-    public void onCreate(Bundle savedInstanceState, PersistableBundle persistentState) {
-        super.onCreate(savedInstanceState, persistentState);
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(getLayoutId());
+        afterCreate(savedInstanceState);
     }
 
 
