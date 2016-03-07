@@ -10,10 +10,17 @@ import com.kyle.commonlib.utils.NetUtils;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.security.KeyStore;
+import java.security.SecureRandom;
+import java.security.cert.CertificateFactory;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLSocketFactory;
+import javax.net.ssl.TrustManagerFactory;
 import okhttp3.Authenticator;
 import okhttp3.Cache;
 import okhttp3.CacheControl;
@@ -61,9 +68,6 @@ public class OkHttpManager {
     private static final ArrayList<Cookie> cookieStore = new ArrayList<>();
 
 
-
-
-
     public OkHttpClient getOkHttpClient(){
         return okHttpClient;
     }
@@ -72,21 +76,26 @@ public class OkHttpManager {
     private OkHttpManager(Context context) {
 
         if (okHttpClient == null) {
+
+            /*
+             *调试时用
+             */
             HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
+            loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
 
             /*
              * 如果你需要在遇到诸如 401 Not Authorised 的时候进行刷新 token，
              * 可以使用 Authenticator，这是一个专门设计用于当验证出现错误的时候，进行询问获取处理的拦截器：
              */
-            Authenticator mAuthenticator = new Authenticator() {
-                @Override public Request authenticate(Route route, Response response)
-                        throws IOException {
-                    NetCommon.sToken = TokenService.refreshToken();
-                    return response.request().newBuilder()
-                            .addHeader("Authorization", NetCommon.sToken)
-                            .build();
-                }
-            };
+            //Authenticator mAuthenticator = new Authenticator() {
+            //    @Override public Request authenticate(Route route, Response response)
+            //            throws IOException {
+            //        NetCommon.sToken = TokenService.refreshToken();
+            //        return response.request().newBuilder()
+            //                .addHeader("Authorization", NetCommon.sToken)
+            //                .build();
+            //    }
+            //};
 
             /*
              * 缓存目录
@@ -96,6 +105,7 @@ public class OkHttpManager {
                 baseDir = context.getExternalCacheDir();
             }
             final File cacheDir = new File(baseDir, "HttpResponseCache");
+
             /*
              *构建
              */
@@ -108,6 +118,13 @@ public class OkHttpManager {
                     .addInterceptor(loggingInterceptor)
                     .addInterceptor(new NoNetLoadFromCacheInterceptor())
                     .addNetworkInterceptor(new TokenInterceptor())
+                    .authenticator(new Authenticator() {
+                        @Override
+                        public Request authenticate(Route route, Response response)
+                                throws IOException {
+                            return null;
+                        }
+                    })
                     .addNetworkInterceptor(new UserAgentInterceptor())
                     .cookieJar(new CookieJar() {
                         @Override
@@ -156,13 +173,90 @@ public class OkHttpManager {
         return false;
     }
 
+    public static SSLSocketFactory setCertificates(InputStream... certificates) {
+        try {
+            CertificateFactory certificateFactory = CertificateFactory.getInstance("X.509");
+            KeyStore keyStore = KeyStore.getInstance(KeyStore.getDefaultType());
+            keyStore.load(null);
+            int index = 0;
+            for (InputStream certificate : certificates) {
+                String certificateAlias = Integer.toString(index++);
+                keyStore.setCertificateEntry(certificateAlias, certificateFactory.generateCertificate(certificate));
+
+                try {
+                    if (certificate != null)
+                        certificate.close();
+                } catch (IOException e) {
+                }
+            }
+
+            SSLContext sslContext = SSLContext.getInstance("TLS");
+
+            TrustManagerFactory trustManagerFactory =
+                    TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
+
+            trustManagerFactory.init(keyStore);
+            sslContext.init
+                    (
+                            null,
+                            trustManagerFactory.getTrustManagers(),
+                            new SecureRandom()
+                    );
+            return sslContext.getSocketFactory();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return null;
+
+    }
+
+    private static class MyAuthenticator implements Authenticator {
+        @Override public Request authenticate(Route route, Response response)
+                throws IOException {
+            NetCommon.sToken = TokenService.refreshToken();
+            return response.request().newBuilder()
+                           .addHeader("Authorization", NetCommon.sToken)
+                           .build();
+        }
+    }
+
+    private static class ForceRewriteCacheCtrl implements Interceptor {
+
+        @Override public Response intercept(Interceptor.Chain chain) throws IOException {
+
+            okhttp3.Request request = chain.request();
+            if(!NetUtils.isNetworkConnected()){
+                request = request.newBuilder()
+                                 .cacheControl(CacheControl.FORCE_CACHE)
+                                 .build();
+                Log.d(TAG, "intercept: no net");
+            }
+            Response originalResponse = chain.proceed(request);
+            if(NetUtils.isNetworkConnected()){
+                //有网的时候读接口上的@Headers里的配置，你可以在这里进行统一的设置
+                //String cacheControl = request.cacheControl().toString();
+                //return originalResponse.newBuilder()
+                //                       .header("Cache-Control", cacheControl)
+                //                       .removeHeader("Pragma")
+                //                       .build();
+
+                return originalResponse;
+            }else{
+                return originalResponse.newBuilder()
+                                       .header("Cache-Control", "public, only-if-cached, max-stale=2419200")
+                                       .removeHeader("Pragma")
+                                       .build();
+            }
+        }
+    }
 
     private static class NoNetLoadFromCacheInterceptor implements Interceptor {
         @Override
         public Response intercept(Chain chain) throws IOException {
             Request request = chain.request();
             if (!NetUtils.isNetworkConnected()) {//判断网络连接状况
-
                 request = request.newBuilder()
                         .cacheControl(CacheControl.FORCE_CACHE)//无网络时只从缓存中读取
                         .build();

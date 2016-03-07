@@ -15,7 +15,7 @@ android {
 
     signingConfigs {
         release {
-            storeFile file("D:/android/keystores/wangkai.jks")
+            storeFile file("D:/android-sdk/selfFiles/keystores/tubiaoxiu.keystore")
             storePassword KEYSTORE_PASSWORD
             keyAlias KEY_ALIAS
             keyPassword KEY_PASSWORD
