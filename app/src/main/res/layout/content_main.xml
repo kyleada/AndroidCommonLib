@@ -27,7 +27,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:text="ZhihuDailyPRD"
+                android:text="知乎日报PRD"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="8dp"
@@ -36,6 +36,15 @@
                 android:background="@drawable/background_card"
                 android:onClick="onClickToZhihuDaily" />
 
+            <TextView
+                android:text="LiteORM"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:textSize="16sp"
+                android:background="@drawable/background_card"
+                android:onClick="onClickLiteORM" />
 
         </LinearLayout>
 

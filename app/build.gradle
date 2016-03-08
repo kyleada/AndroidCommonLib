@@ -7,8 +7,8 @@ android {
 
     defaultConfig {
         applicationId "com.kyle.common"
-        minSdkVersion 17
-        targetSdkVersion 23
+        minSdkVersion rootProject.ext.androidMinSdk
+        targetSdkVersion rootProject.ext.androidTargetSdk
         versionCode 1
         versionName "1.0"
     }
