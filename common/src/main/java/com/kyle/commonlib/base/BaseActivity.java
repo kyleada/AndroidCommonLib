@@ -3,6 +3,7 @@ package com.kyle.commonlib.base;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 
 import butterknife.ButterKnife;
@@ -16,11 +17,19 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     protected abstract void afterCreate(Bundle savedInstanceState);
 
+    protected abstract boolean isActionBarNeedBackEnable();
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getLayoutId());
+        ActionBar ab = getSupportActionBar();
+        if (ab != null && isActionBarNeedBackEnable()) {
+            ab.setHomeButtonEnabled(true);
+            ab.setDefaultDisplayHomeAsUpEnabled(true);
+            ab.setDisplayHomeAsUpEnabled(true);
+        }
         afterCreate(savedInstanceState);
     }
 
