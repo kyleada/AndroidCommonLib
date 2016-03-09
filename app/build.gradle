@@ -7,15 +7,15 @@ android {
 
     defaultConfig {
         applicationId "com.kyle.common"
-        minSdkVersion 17
-        targetSdkVersion 23
+        minSdkVersion rootProject.ext.androidMinSdk
+        targetSdkVersion rootProject.ext.androidTargetSdk
         versionCode 1
         versionName "1.0"
     }
 
     signingConfigs {
         release {
-            storeFile file("D:/android/keystores/wangkai.jks")
+            storeFile file("D:/android-sdk/selfFiles/keystores/tubiaoxiu.keystore")
             storePassword KEYSTORE_PASSWORD
             keyAlias KEY_ALIAS
             keyPassword KEY_PASSWORD

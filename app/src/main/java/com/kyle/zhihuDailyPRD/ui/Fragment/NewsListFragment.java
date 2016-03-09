@@ -63,7 +63,7 @@ public class NewsListFragment extends BaseFragment implements SwipeRefreshLayout
     @Override
     protected void afterCreate(Bundle savedInstanceState) {
         init();
-        loadData();
+        loadDataKyle();
     }
 
 
@@ -249,7 +249,7 @@ public class NewsListFragment extends BaseFragment implements SwipeRefreshLayout
 
     @Override
     public void onRefresh() {
-        loadData();
+        loadDataKyle();
     }
 
     @Override

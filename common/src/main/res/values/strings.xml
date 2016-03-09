@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">Common</string>
+
+    <string name="just_now">刚刚</string>
+    <string name="minute_format">%1$d分钟前</string>
+    <string name="hour_format">%1$d小时前</string>
+    <string name="today_hour_minute_pattern">今天 HH:mm</string>
+    <string name="yesterday_hour_minute_pattern">昨天 HH:mm</string>
+    <string name="month_day_hour_minute_pattern">M月d日 HH:mm</string>
+    <string name="date_hour_minute_pattern">Y年M月d日 HH:mm</string>
+
 </resources>

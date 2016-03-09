@@ -2,6 +2,7 @@ package com.kyle;
 
 import android.app.Application;
 
+import com.kyle.liteORM.LiteApp;
 import com.kyle.common.BuildConfig;
 import com.kyle.zhihuDailyPRD.DailyApp;
 
@@ -16,5 +17,6 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
         DailyApp.init(this);
+        LiteApp.init(this);
     }
 }

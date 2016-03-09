@@ -20,8 +20,8 @@ public class SpUtils {
         mSp = sp;
     }
 
-    public static void saveOrUpdate(String key, String json) {
-        mSp.edit().putString(key, json).apply();
+    public static void saveOrUpdate(String key, String value) {
+        mSp.edit().putString(key, value).apply();
     }
 
     public static String find(String key) {
