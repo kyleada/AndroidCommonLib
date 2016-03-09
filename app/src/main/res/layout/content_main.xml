@@ -19,7 +19,7 @@
         <LinearLayout
             android:layout_width="match_parent"
         android:layout_height="wrap_content"
-            android:divider="@drawable/list_divider"
+            android:divider="@drawable/vertical_list_divider"
             android:dividerPadding="4dp"
             android:showDividers="beginning|middle|end"
             android:paddingTop="10dp"

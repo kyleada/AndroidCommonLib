@@ -29,7 +29,7 @@ public class DividerItemDecoration extends RecyclerView.ItemDecoration {
     private int mOrientation;
 
     public DividerItemDecoration(Context context, int orientation) {
-        mDivider = ContextCompat.getDrawable(context, R.drawable.list_divider);
+        mDivider = ContextCompat.getDrawable(context, R.drawable.vertical_list_divider);
         setOrientation(orientation);
     }
 
