@@ -33,6 +33,11 @@
         <activity
             android:name="com.kyle.zhihuDailyPRD.ui.Activity.NewsDetailActivity"/>
         <activity android:name="com.kyle.liteORM.LiteActivity"></activity>
+        <activity android:name="com.kyle.recyclerViewHeaderFooter.EndlessGridLayoutActivity"></activity>
+        <activity android:name="com.kyle.recyclerViewHeaderFooter.EndlessStaggeredGridLayoutActivity"></activity>
+        <activity android:name="com.kyle.recyclerViewHeaderFooter.RVMainActivity"></activity>
+        <activity android:name="com.kyle.recyclerViewHeaderFooter.EndlessLinearLayoutActivity"></activity>
+        <activity android:name="com.kyle.recyclerViewHeaderFooter.LinearLayoutActivity"></activity>
     </application>
 
 </manifest>

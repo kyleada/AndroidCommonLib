@@ -2,16 +2,28 @@ package com.kyle.liteORM;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
-import butterknife.ButterKnife;
+
 import com.kyle.common.R;
 import com.kyle.commonlib.db.LiteOrmDBUtil;
+import com.kyle.commonlib.rx.RxUtils;
 import com.kyle.commonlib.utils.GsonHelper;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.Callable;
+
+import butterknife.ButterKnife;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Action1;
+import rx.functions.Func1;
+import rx.schedulers.Schedulers;
 
 public class LiteActivity extends AppCompatActivity {
+
+    private static final String TAG = "LiteActivity";
 
     TextView tvData;
     @Override protected void onCreate(Bundle savedInstanceState) {
@@ -30,9 +42,40 @@ public class LiteActivity extends AppCompatActivity {
     }
 
     public void onClickReadData(View view){
-        List<Conversation> list = LiteOrmDBUtil.getQueryAll(Conversation.class);
-        String jsonStr  = GsonHelper.get().toJson(list);
-        tvData.setText(jsonStr);
+//        List<Conversation> list = LiteOrmDBUtil.getQueryAll(Conversation.class);
+//        String jsonStr  = GsonHelper.get().toJson(list);
+//        tvData.setText(jsonStr);
+        RxUtils.makeObservable(getData())
+                .map(new Func1<List<Conversation>, String>() {
+                    @Override
+                    public String call(List<Conversation> conversations) {
+                        Log.d(TAG, "call: " + Thread.currentThread().getName());
+                        return GsonHelper.get().toJson(conversations);
+                    }
+                })
+                .subscribeOn(Schedulers.computation())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Action1<String>() {
+                    @Override
+                    public void call(String s) {
+                        tvData.setText(s);
+                    }
+                });
+    }
+
+    private List<Conversation> getDataFromDatabase() {
+        // Map<String, String> result = new HashMap<>();
+        // do whatever you need to (i.e. db query, cursor) to fill it in
+        Log.d(TAG, "getDataFromDatabase: " + Thread.currentThread().getName());
+        return LiteOrmDBUtil.getQueryAll(Conversation.class);
+    }
+
+    private Callable<List<Conversation>> getData() {
+        return new Callable() {
+            public List<Conversation> call() {
+                return getDataFromDatabase();
+            }
+        };
     }
 
     private static void test(){

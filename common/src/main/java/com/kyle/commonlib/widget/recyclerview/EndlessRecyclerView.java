@@ -41,7 +41,7 @@ public class EndlessRecyclerView extends RecyclerView {
     }
 
     private void init() {
-        super.setOnScrollListener(new RecyclerView.OnScrollListener() {
+        super.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
@@ -78,7 +78,7 @@ public class EndlessRecyclerView extends RecyclerView {
     }
 
     @Override
-    public void setOnScrollListener(OnScrollListener listener) {
+    public void addOnScrollListener(OnScrollListener listener) {
         scrollListener = listener;
     }
 
