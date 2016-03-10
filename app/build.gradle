@@ -100,7 +100,7 @@ dependencies {
     //TabActivity
     compile libs.flycoTabLayout_Lib
     //我的common库
-    compile project(':common')
+    compile project(':commonlib')
 
 
 }

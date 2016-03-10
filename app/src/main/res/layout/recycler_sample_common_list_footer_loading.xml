@@ -11,7 +11,7 @@
         android:layout_width="@dimen/dp_22"
         android:layout_height="@dimen/dp_22"
         android:layout_marginRight="@dimen/dp_4"
-        android:indeterminateDrawable="@drawable/sample_footer_loading_progress" />
+        android:indeterminateDrawable="@drawable/recyclerview_footer_loading_progress" />
 
     <TextView
         android:id="@+id/loading_text"
