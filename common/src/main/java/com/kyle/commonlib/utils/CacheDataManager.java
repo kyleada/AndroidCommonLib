@@ -3,6 +3,7 @@ package com.kyle.commonlib.utils;
 import android.content.Context;
 import android.os.Environment;
 import android.text.TextUtils;
+
 import java.io.File;
 import java.math.BigDecimal;
 
@@ -124,7 +125,13 @@ public class CacheDataManager {
                 }
             }
         }
-        return dir.delete();
+
+        if (dir != null && dir.isFile()) {
+            return dir.delete();
+        }
+
+        return false;
+
     }
     // 获取文件
     //Context.getExternalFilesDir() --> SDCard/Android/data/你的应用的包名/files/ 目录，一般放一些长时间保存的数据

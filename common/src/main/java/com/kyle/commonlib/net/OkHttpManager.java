@@ -199,6 +199,7 @@ public class OkHttpManager {
                 try {
                     if (certificate != null) certificate.close();
                 } catch (IOException e) {
+                    e.printStackTrace();
                 }
             }
 

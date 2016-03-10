@@ -90,6 +90,7 @@ public class Logger {
         try {
             Log.v(TAG, msg);
         } catch (Throwable e) {
+            e.printStackTrace();
         }
     }
 

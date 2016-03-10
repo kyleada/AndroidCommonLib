@@ -38,6 +38,7 @@ public class DateUtils {
         try {
             return formatDate(Long.parseLong(longStr), format);
         } catch (Exception e) {
+            e.printStackTrace();
         }
         return "";
     }

@@ -118,6 +118,7 @@ public class FileUtils {
                 try {
                     out.close();
                 } catch (Exception e2) {
+                    e2.printStackTrace();
                 }
         }
 
@@ -148,6 +149,7 @@ public class FileUtils {
                 try {
                     out.close();
                 } catch (Exception e2) {
+                    e2.printStackTrace();
                 }
         }
 
