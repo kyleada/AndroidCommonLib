@@ -10,9 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
-import com.cundong.recyclerview.RecyclerViewUtils;
-
+import com.kyle.common.R;
+import com.kyle.commonlib.widget.recyclerview.RecyclerViewUtils;
 import java.util.ArrayList;
 
 /**
@@ -33,7 +32,7 @@ public class RVMainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.sample_activity);
+        setContentView(R.layout.recycler_sample_activity);
 
         mRecyclerView = (RecyclerView) findViewById(R.id.list);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -73,7 +72,7 @@ public class RVMainActivity extends AppCompatActivity {
 
         @Override
         public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            return new ViewHolder(mLayoutInflater.inflate(R.layout.sample_item_text, parent, false));
+            return new ViewHolder(mLayoutInflater.inflate(R.layout.recycler_sample_item_text, parent, false));
         }
 
         @Override

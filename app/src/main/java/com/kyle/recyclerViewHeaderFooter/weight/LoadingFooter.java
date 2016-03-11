@@ -7,8 +7,7 @@ import android.view.ViewStub;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
-import com.cundong.recyclerview.sample.R;
+import com.kyle.common.R;
 
 /**
  * Created by cundong on 2015/10/9.
@@ -41,7 +40,7 @@ public class LoadingFooter extends RelativeLayout {
 
     public void init(Context context) {
 
-        inflate(context, R.layout.sample_common_list_footer, this);
+        inflate(context, R.layout.recycler_sample_common_list_footer, this);
         setOnClickListener(null);
 
         setState(State.Normal, true);
