@@ -7,15 +7,14 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-
 import com.kyle.common.R;
-import com.kyle.commonlib.base.BaseActivity;
+import com.kyle.commonlib.base.BaseToolBarActivity;
 import com.kyle.liteORM.LiteActivity;
 import com.kyle.recyclerViewHeaderFooter.RVMainActivity;
 import com.kyle.tab.TabActivity;
 import com.kyle.zhihuDailyPRD.ui.Activity.ZhihuHomeActivity;
 
-public class MainActivity extends BaseActivity {
+public class MainActivity extends BaseToolBarActivity {
 
 
     @Override

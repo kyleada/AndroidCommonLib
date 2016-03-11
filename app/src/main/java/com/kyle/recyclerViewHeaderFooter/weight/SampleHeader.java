@@ -3,8 +3,7 @@ package com.kyle.recyclerViewHeaderFooter.weight;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.RelativeLayout;
-
-import com.cundong.recyclerview.sample.R;
+import com.kyle.common.R;
 
 /**
  * Created by cundong on 2015/10/9.
@@ -30,6 +29,6 @@ public class SampleHeader extends RelativeLayout {
 
     public void init(Context context) {
 
-        inflate(context, R.layout.sample_header, this);
+        inflate(context, R.layout.recycler_sample_header, this);
     }
 }

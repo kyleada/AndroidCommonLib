@@ -34,4 +34,5 @@ dependencies {
     compile 'com.jakewharton:butterknife:7.0.1'
     compile 'com.jakewharton.threetenabp:threetenabp:1.0.3'
     compile files('libs/lite-orm-1.7.0.jar')
+    compile 'com.android.support:design:23.2.0'
 }

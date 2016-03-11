@@ -3,9 +3,8 @@ package com.kyle.recyclerViewHeaderFooter.utils;
 import android.app.Activity;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-
-import com.cundong.recyclerview.HeaderAndFooterRecyclerViewAdapter;
-import com.cundong.recyclerview.sample.weight.LoadingFooter;
+import com.kyle.commonlib.widget.recyclerview.HeaderAndFooterRecyclerViewAdapter;
+import com.kyle.recyclerViewHeaderFooter.weight.LoadingFooter;
 
 /**
  * Created by cundong on 2015/11/9.

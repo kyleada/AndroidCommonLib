@@ -10,12 +10,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.cundong.recyclerview.HeaderAndFooterRecyclerViewAdapter;
-import com.cundong.recyclerview.RecyclerViewUtils;
-import com.cundong.recyclerview.sample.weight.SampleFooter;
-import com.cundong.recyclerview.sample.weight.SampleHeader;
-
+import com.kyle.common.R;
+import com.kyle.commonlib.widget.recyclerview.HeaderAndFooterRecyclerViewAdapter;
+import com.kyle.commonlib.widget.recyclerview.RecyclerViewUtils;
+import com.kyle.recyclerViewHeaderFooter.weight.SampleFooter;
+import com.kyle.recyclerViewHeaderFooter.weight.SampleHeader;
 import java.util.ArrayList;
 
 /**
@@ -29,12 +28,13 @@ public class LinearLayoutActivity extends AppCompatActivity {
 
     private DataAdapter mDataAdapter = null;
 
-    private HeaderAndFooterRecyclerViewAdapter mHeaderAndFooterRecyclerViewAdapter = null;
+    private HeaderAndFooterRecyclerViewAdapter
+            mHeaderAndFooterRecyclerViewAdapter = null;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.sample_activity);
+        setContentView(R.layout.recycler_sample_activity);
 
         mRecyclerView = (RecyclerView) findViewById(R.id.list);
 
@@ -75,7 +75,8 @@ public class LinearLayoutActivity extends AppCompatActivity {
 
         @Override
         public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            return new ViewHolder(mLayoutInflater.inflate(R.layout.sample_item_text, parent, false));
+            return new ViewHolder(mLayoutInflater.inflate(R.layout
+                    .recycler_sample_item_text, parent, false));
         }
 
         @Override
