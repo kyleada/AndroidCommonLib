@@ -7,6 +7,7 @@ package com.kyle.commonlib.utils;
 
 import android.content.Context;
 import android.widget.Toast;
+
 import com.kyle.commonlib.base.AppContextUtil;
 
 public class ToastUtils {

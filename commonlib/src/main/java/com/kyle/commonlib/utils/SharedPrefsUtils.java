@@ -8,6 +8,7 @@ package com.kyle.commonlib.utils;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
+
 import java.util.Set;
 
 public class SharedPrefsUtils {
