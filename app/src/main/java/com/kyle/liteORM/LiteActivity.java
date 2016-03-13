@@ -1,15 +1,17 @@
 package com.kyle.liteORM;
 
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
-import com.kyle.common.R;
 import com.kyle.commonlib.db.LiteOrmDBUtil;
 import com.kyle.commonlib.rx.RxUtils;
 import com.kyle.commonlib.utils.GsonHelper;
+import com.kyle.myapp.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,12 +27,23 @@ public class LiteActivity extends AppCompatActivity {
 
     private static final String TAG = "LiteActivity";
 
+    TextView tab1;
     TextView tvData;
     @Override protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lite);
         tvData = ButterKnife.findById(this,R.id.textView);
         LiteOrmDBUtil.init(LiteApp.sDb);
+
+        Typeface font = Typeface.createFromAsset(getAssets(),
+                "fontawesome-webfont.ttf");
+        tab1 = (TextView) findViewById(R.id.tab1);
+        TextView tab2 = (TextView) findViewById(R.id.tab2);
+        TextView tab3 = (TextView) findViewById(R.id.tab3);
+
+        tab1.setTypeface(font);
+        tab2.setTypeface(font);
+        tab3.setTypeface(font);
     }
     public void onClickInsertData(View view){
         Conversation mConversation = new Conversation();
@@ -39,6 +52,9 @@ public class LiteActivity extends AppCompatActivity {
             list.add(mConversation);
         }
         LiteOrmDBUtil.insertAll(list);
+        tab1.setTextColor(Color.GRAY);
+        tab1.getBackground().setAlpha(0);
+
     }
 
     public void onClickReadData(View view){

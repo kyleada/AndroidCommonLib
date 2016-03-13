@@ -10,7 +10,7 @@ import android.widget.TextView;
 import com.daimajia.slider.library.Indicators.PagerIndicator;
 import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
-import com.kyle.common.R;
+import com.kyle.myapp.R;
 import com.kyle.zhihuDailyPRD.model.TodayNews;
 import com.kyle.zhihuDailyPRD.ui.Activity.NewsDetailActivity;
 import com.kyle.zhihuDailyPRD.view.TextSliderView;

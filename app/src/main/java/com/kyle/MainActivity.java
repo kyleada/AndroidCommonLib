@@ -7,9 +7,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import com.kyle.common.R;
+
 import com.kyle.commonlib.base.BaseToolBarActivity;
 import com.kyle.liteORM.LiteActivity;
+import com.kyle.myapp.R;
+import com.kyle.myapp.auth.ui.LoginActivity;
 import com.kyle.recyclerViewHeaderFooter.RVMainActivity;
 import com.kyle.tab.TabActivity;
 import com.kyle.zhihuDailyPRD.ui.Activity.ZhihuHomeActivity;
@@ -20,6 +22,16 @@ public class MainActivity extends BaseToolBarActivity {
     @Override
     protected int getLayoutId() {
         return R.layout.activity_main;
+    }
+
+    @Override
+    protected int getAppBarLayoutId() {
+        return R.id.app_bar_layout;
+    }
+
+    @Override
+    protected int getToolbarLayoutId() {
+        return R.id.toolbar;
     }
 
     @Override
@@ -65,6 +77,10 @@ public class MainActivity extends BaseToolBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    public void onClickToTabActivity(View view) {
+        startActivityClass(TabActivity.class);
+    }
+
     public void onClickToZhihuDaily(View view) {
         startActivityClass(ZhihuHomeActivity.class);
     }
@@ -75,5 +91,9 @@ public class MainActivity extends BaseToolBarActivity {
 
     public void onClickRecyclerView(View view) {
         startActivityClass(RVMainActivity.class);
+    }
+
+    public void onClickLogin(View view) {
+        startActivityClass(LoginActivity.class);
     }
 }

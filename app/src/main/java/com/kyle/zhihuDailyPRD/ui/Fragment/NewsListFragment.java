@@ -11,7 +11,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.kyle.common.R;
+import com.kyle.myapp.R;
 import com.kyle.zhihuDailyPRD.base.BaseFragment;
 import com.kyle.zhihuDailyPRD.base.DividerItemDecoration;
 import com.kyle.zhihuDailyPRD.model.TodayNews;

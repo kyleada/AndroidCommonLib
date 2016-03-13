@@ -7,7 +7,9 @@ import android.view.ViewStub;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import com.kyle.common.R;
+
+import com.kyle.myapp.R;
+
 
 /**
  * Created by cundong on 2015/10/9.

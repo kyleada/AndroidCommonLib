@@ -10,8 +10,8 @@ import android.support.v4.view.ViewPager;
 import com.flyco.tablayout.CommonTabLayout;
 import com.flyco.tablayout.listener.CustomTabEntity;
 import com.flyco.tablayout.listener.OnTabSelectListener;
-import com.kyle.common.R;
 import com.kyle.commonlib.base.BaseActivity;
+import com.kyle.myapp.R;
 
 import java.util.ArrayList;
 
@@ -40,6 +40,7 @@ public class TabActivity extends BaseActivity {
     @Bind(R.id.tabbar)
     CommonTabLayout mTabLayout;
 
+
     @Override
     protected int getLayoutId() {
         return R.layout.tab_activity_tab;
@@ -56,6 +57,7 @@ public class TabActivity extends BaseActivity {
         for (String title : mTitles) {
             mFragments.add(SimpleCardFragment.getInstance("Switch ViewPager " + title));
         }
+        mFragments.set(0, SimpleCardFragment2.getInstance("test Toolbar alpha"));
         mViewPager.setAdapter(new MyPagerAdapter(getSupportFragmentManager()));
         mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override

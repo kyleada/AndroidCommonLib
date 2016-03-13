@@ -2,7 +2,8 @@ package com.kyle.liteORM;
 
 import android.app.Application;
 import android.content.Context;
-import com.kyle.common.BuildConfig;
+
+import com.kyle.myapp.BuildConfig;
 import com.litesuits.orm.LiteOrm;
 
 /**

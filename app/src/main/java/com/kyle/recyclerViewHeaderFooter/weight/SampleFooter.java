@@ -4,7 +4,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.RelativeLayout;
 
-import com.kyle.common.R;
+import com.kyle.myapp.R;
 
 
 /**

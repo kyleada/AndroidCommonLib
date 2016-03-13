@@ -4,8 +4,8 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 
-import com.kyle.common.R;
-import com.kyle.zhihuDailyPRD.base.BaseActivity;
+import com.kyle.myapp.R;
+import com.kyle.zhihuDailyPRD.base.ZhihuBaseActivity;
 import com.kyle.zhihuDailyPRD.ui.Fragment.NewsListFragment;
 
 
@@ -13,7 +13,7 @@ import com.kyle.zhihuDailyPRD.ui.Fragment.NewsListFragment;
  * @author lsxiao
  * @date 2015-11-03 22:28
  */
-public class ZhihuHomeActivity extends BaseActivity {
+public class ZhihuHomeActivity extends ZhihuBaseActivity {
 
     @Override
     protected int getLayoutId() {

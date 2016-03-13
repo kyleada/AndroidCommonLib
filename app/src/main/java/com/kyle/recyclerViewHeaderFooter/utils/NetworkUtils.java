@@ -59,7 +59,7 @@ public class NetworkUtils {
             return arrayOfString;
         }
 
-        ConnectivityManager localConnectivityManager = (ConnectivityManager) paramContext.getSystemService("connectivity");
+        ConnectivityManager localConnectivityManager = (ConnectivityManager) paramContext.getSystemService(Context.CONNECTIVITY_SERVICE);
         if (localConnectivityManager == null) {
             arrayOfString[0] = "Unknown";
             return arrayOfString;

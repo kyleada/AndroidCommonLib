@@ -10,8 +10,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import com.kyle.common.R;
+
 import com.kyle.commonlib.widget.recyclerview.RecyclerViewUtils;
+import com.kyle.myapp.R;
+
 import java.util.ArrayList;
 
 /**

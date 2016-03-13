@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.kyle.common">
+    package="com.kyle.myapp">
 
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
@@ -38,6 +38,9 @@
         <activity android:name="com.kyle.recyclerViewHeaderFooter.RVMainActivity"></activity>
         <activity android:name="com.kyle.recyclerViewHeaderFooter.EndlessLinearLayoutActivity"></activity>
         <activity android:name="com.kyle.recyclerViewHeaderFooter.LinearLayoutActivity"></activity>
+        <activity android:name=".auth.ui.LoginActivity"></activity>
+        <activity android:name=".auth.ui.SignUpActivity"></activity>
+        <activity android:name=".auth.ui.ForgetPasswordActivity"></activity>
     </application>
 
 </manifest>

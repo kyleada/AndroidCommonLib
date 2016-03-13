@@ -14,16 +14,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.kyle.common.R;
+
 import com.kyle.commonlib.widget.recyclerview.EndlessRecyclerOnScrollListener;
 import com.kyle.commonlib.widget.recyclerview.ExStaggeredGridLayoutManager;
 import com.kyle.commonlib.widget.recyclerview.HeaderAndFooterRecyclerViewAdapter;
 import com.kyle.commonlib.widget.recyclerview.HeaderSpanSizeLookup;
 import com.kyle.commonlib.widget.recyclerview.RecyclerViewUtils;
+import com.kyle.myapp.R;
 import com.kyle.recyclerViewHeaderFooter.utils.NetworkUtils;
 import com.kyle.recyclerViewHeaderFooter.utils.RecyclerViewStateUtils;
 import com.kyle.recyclerViewHeaderFooter.weight.LoadingFooter;
 import com.kyle.recyclerViewHeaderFooter.weight.SampleHeader;
+
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 

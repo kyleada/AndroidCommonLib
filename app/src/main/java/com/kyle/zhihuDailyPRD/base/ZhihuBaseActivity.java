@@ -15,11 +15,11 @@ import butterknife.ButterKnife;
  * @author lsxiao
  * @date 2015-11-03 22:28
  */
-public abstract class BaseActivity extends RxAppCompatActivity {
+public abstract class ZhihuBaseActivity extends RxAppCompatActivity {
     @Inject
     DataLayer mDataLayer;
 
-    public BaseActivity() {
+    public ZhihuBaseActivity() {
         AppLayerComponent.Instance.get().inject(this);
     }
 

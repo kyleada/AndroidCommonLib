@@ -7,7 +7,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
-import com.kyle.common.R;
+import com.kyle.myapp.R;
 
 
 /**

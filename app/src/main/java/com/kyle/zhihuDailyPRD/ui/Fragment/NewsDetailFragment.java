@@ -14,7 +14,7 @@ import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.kyle.common.R;
+import com.kyle.myapp.R;
 import com.kyle.zhihuDailyPRD.base.BaseFragment;
 import com.kyle.zhihuDailyPRD.base.BundleKey;
 import com.kyle.zhihuDailyPRD.model.News;

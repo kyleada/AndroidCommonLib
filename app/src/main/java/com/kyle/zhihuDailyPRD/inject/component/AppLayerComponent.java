@@ -2,9 +2,9 @@ package com.kyle.zhihuDailyPRD.inject.component;
 
 import android.support.annotation.NonNull;
 
-import com.kyle.zhihuDailyPRD.base.BaseActivity;
 import com.kyle.zhihuDailyPRD.base.BaseDialogFragment;
 import com.kyle.zhihuDailyPRD.base.BaseFragment;
+import com.kyle.zhihuDailyPRD.base.ZhihuBaseActivity;
 import com.kyle.zhihuDailyPRD.inject.module.AppLayerModule;
 
 import javax.inject.Singleton;
@@ -20,7 +20,7 @@ import dagger.Component;
 @Component(dependencies = AppLayerModule.class)
 public interface AppLayerComponent {
 
-    void inject(BaseActivity activity);
+    void inject(ZhihuBaseActivity activity);
 
     void inject(BaseFragment fragment);
 

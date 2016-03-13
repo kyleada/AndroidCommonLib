@@ -27,6 +27,16 @@
             android:orientation="vertical">
 
             <TextView
+                android:text="TabActivity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:textSize="16sp"
+                android:background="@drawable/background_card"
+                android:onClick="onClickToTabActivity" />
+
+            <TextView
                 android:text="知乎日报PRD"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -55,6 +65,17 @@
                 android:textSize="16sp"
                 android:background="@drawable/background_card"
                 android:onClick="onClickRecyclerView" />
+
+            <TextView
+                android:text="登录模块"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:textSize="16sp"
+                android:background="@drawable/background_card"
+                android:onClick="onClickLogin" />
+
 
         </LinearLayout>
 

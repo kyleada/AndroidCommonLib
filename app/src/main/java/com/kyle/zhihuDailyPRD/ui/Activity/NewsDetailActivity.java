@@ -8,14 +8,14 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.MenuItem;
 
-import com.kyle.common.R;
-import com.kyle.zhihuDailyPRD.base.BaseActivity;
+import com.kyle.myapp.R;
 import com.kyle.zhihuDailyPRD.base.BundleKey;
+import com.kyle.zhihuDailyPRD.base.ZhihuBaseActivity;
 import com.kyle.zhihuDailyPRD.model.TodayNews;
 import com.kyle.zhihuDailyPRD.ui.Fragment.NewsDetailFragment;
 
 
-public class NewsDetailActivity extends BaseActivity {
+public class NewsDetailActivity extends ZhihuBaseActivity {
     @Override
     protected int getLayoutId() {
         return R.layout.zhprd_activity_news;
