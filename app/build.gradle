@@ -6,7 +6,7 @@ android {
     buildToolsVersion "23.0.2"
 
     defaultConfig {
-        applicationId "com.kyle.common"
+        applicationId "com.kyle.myapp"
         minSdkVersion rootProject.ext.androidMinSdk
         targetSdkVersion rootProject.ext.androidTargetSdk
         versionCode 1
@@ -15,7 +15,8 @@ android {
 
     signingConfigs {
         release {
-            storeFile file("D:/android-sdk/selfFiles/keystores/tubiaoxiu.keystore")
+//            storeFile file("D:/android-sdk/selfFiles/keystores/tubiaoxiu.keystore")
+            storeFile file("D:/android/keystores/wangkai.jks")
             storePassword KEYSTORE_PASSWORD
             keyAlias KEY_ALIAS
             keyPassword KEY_PASSWORD
@@ -42,6 +43,8 @@ android {
             assets.srcDirs = ['src/main/assets', 'src/main/assets/']
         }
     }
+
+    useLibrary 'org.apache.http.legacy'
 }
 
 dependencies {
@@ -103,4 +106,7 @@ dependencies {
     compile project(':commonlib')
 
 
+    compile project(path: ':umenglib')
+
+    compile 'com.jakewharton.timber:timber:4.1.1'
 }

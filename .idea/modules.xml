@@ -6,6 +6,9 @@
       <module fileurl="file://$PROJECT_DIR$/TestMyLib.iml" filepath="$PROJECT_DIR$/TestMyLib.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/commonlib/common.iml" filepath="$PROJECT_DIR$/commonlib/common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/commonlib/commonlib.iml" filepath="$PROJECT_DIR$/commonlib/commonlib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/umenglib/umenglib.iml" filepath="$PROJECT_DIR$/umenglib/umenglib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/zxinglib/zxinglib.iml" filepath="$PROJECT_DIR$/zxinglib/zxinglib.iml" />
     </modules>
   </component>
 </project>
