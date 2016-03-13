@@ -12,12 +12,17 @@ import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.support.v4.view.animation.FastOutLinearInInterpolator;
 import android.support.v4.view.animation.FastOutSlowInInterpolator;
+import android.text.Selection;
+import android.text.Spannable;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
+import android.widget.EditText;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -370,6 +375,24 @@ public class ViewUtils {
                 + (listView.getDividerHeight() * (listAdapter.getCount() - 1));
         listView.setLayoutParams(params);
         listView.requestLayout();
+    }
+
+    //用于密码输入框显示和隐藏输入文字
+    public static void toggleEditTextShow(EditText editText, boolean show) {
+        if (show) {
+            //设置EditText文本为可见的
+            editText.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+        } else {
+            editText.setTransformationMethod(PasswordTransformationMethod.getInstance());
+        }
+
+        editText.postInvalidate();
+        //切换后将EditText光标置于末尾
+        CharSequence charSequence = editText.getText();
+        if (charSequence instanceof Spannable) {
+            Spannable spanText = (Spannable) charSequence;
+            Selection.setSelection(spanText, charSequence.length());
+        }
     }
 
 }

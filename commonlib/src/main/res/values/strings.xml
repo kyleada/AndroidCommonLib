@@ -9,4 +9,6 @@
     <string name="month_day_hour_minute_pattern">M月d日 HH:mm</string>
     <string name="date_hour_minute_pattern">Y年M月d日 HH:mm</string>
 
+    <string name="action_share">分享</string>
+
 </resources>

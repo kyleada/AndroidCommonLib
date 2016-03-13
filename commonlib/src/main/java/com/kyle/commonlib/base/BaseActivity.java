@@ -3,7 +3,10 @@ package com.kyle.commonlib.base;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
+import android.support.annotation.StringRes;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.Toast;
+
 import butterknife.ButterKnife;
 
 /**
@@ -48,6 +51,16 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override protected void onDestroy() {
         super.onDestroy();
         ButterKnife.unbind(this);
+    }
+
+    protected void showToast(String msg) {
+
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+    }
+
+    protected void showToast(@StringRes int resId) {
+
+        Toast.makeText(this, resId, Toast.LENGTH_SHORT).show();
     }
 
 

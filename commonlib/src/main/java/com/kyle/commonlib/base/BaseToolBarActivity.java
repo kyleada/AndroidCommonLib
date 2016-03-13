@@ -5,9 +5,8 @@ import android.support.design.widget.AppBarLayout;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.view.animation.DecelerateInterpolator;
-import android.view.inputmethod.InputMethodManager;
+
 import com.kyle.commonlib.R;
 import com.kyle.commonlib.utils.ViewUtils;
 
@@ -21,6 +20,11 @@ public abstract class BaseToolBarActivity extends BaseActivity {
     protected boolean mIsHidden = false;
 
     protected abstract boolean isActionBarNeedBackEnable();
+
+    protected abstract int getAppBarLayoutId();
+
+    protected abstract int getToolbarLayoutId();
+
 
 
     @Override public void onCreate(Bundle savedInstanceState) {
