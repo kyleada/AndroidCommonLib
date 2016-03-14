@@ -31,7 +31,7 @@
         android:background="@android:color/white"
         android:layout_below="@+id/iv_logo">
 
-        <com.kyle.myapp.widget.CleanEditText
+        <com.kkwang.myapp.widget.CleanEditText
             android:id="@+id/et_phone"
             style="@style/login_edit_style"
             android:hint="手机号"
@@ -40,7 +40,7 @@
             android:maxLength="11">
 
             <requestFocus />
-        </com.kyle.myapp.widget.CleanEditText>
+        </com.kkwang.myapp.widget.CleanEditText>
 
         <Button
             android:id="@+id/btn_send_verifi_code"
@@ -55,7 +55,7 @@
             android:textSize="12sp" />
     </RelativeLayout>
 
-    <com.kyle.myapp.widget.CleanEditText
+    <com.kkwang.myapp.widget.CleanEditText
         android:id="@+id/et_password"
         style="@style/login_edit_style"
         android:layout_below="@+id/et_verifiCode"
@@ -64,7 +64,7 @@
         android:hint="密码"
         android:inputType="textPassword" />
 
-    <com.kyle.myapp.widget.CleanEditText
+    <com.kkwang.myapp.widget.CleanEditText
         android:id="@+id/et_verifiCode"
         style="@style/login_edit_style"
         android:layout_below="@+id/layout_phone"
@@ -73,7 +73,7 @@
         android:hint="验证码"
         android:inputType="number" />
 
-    <com.kyle.myapp.widget.CleanEditText
+    <com.kkwang.myapp.widget.CleanEditText
         android:id="@+id/et_nickname"
         style="@style/login_edit_style"
         android:layout_below="@+id/et_password"
