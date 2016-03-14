@@ -1,26 +1,28 @@
-package me.kkwang.commonlib.net;
+package com.kyle.commonlib.net;
 
 import android.content.Context;
 import android.os.Build;
 import android.util.Log;
-
+import com.kyle.commonlib.BuildConfig;
+import com.kyle.commonlib.base.AppContextUtil;
+import com.kyle.commonlib.utils.NetUtils;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.security.KeyStore;
 import java.security.SecureRandom;
+import java.security.cert.CertificateException;
 import java.security.cert.CertificateFactory;
+import java.security.cert.X509Certificate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
-
+import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLSession;
 import javax.net.ssl.SSLSocketFactory;
 import javax.net.ssl.TrustManagerFactory;
-
-import me.kkwang.commonlib.BuildConfig;
-import me.kkwang.commonlib.base.AppContextUtil;
-import me.kkwang.commonlib.utils.NetUtils;
+import javax.net.ssl.X509TrustManager;
 import okhttp3.Authenticator;
 import okhttp3.Cache;
 import okhttp3.CacheControl;
@@ -400,6 +402,45 @@ public class OkHttpManager {
                                                                         userAgentHeaderValue)
                                                                 .build();
             return chain.proceed(requestWithUserAgent);
+        }
+    }
+
+    /*
+     * 全信任Https
+     * OkHttpClient.Builder builder = new OkHttpClient.Builder();
+        // ignore HTTPS Authentication
+        builder.hostnameVerifier(new MyHostnameVerifier());
+        try {
+            SSLContext sc = SSLContext.getInstance("TLS");
+            sc.init(null, new TrustManager[] { new MyTrustManager() }, new SecureRandom());
+            builder.sslSocketFactory(sc.getSocketFactory());
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        } catch (KeyManagementException e) {
+            e.printStackTrace();
+        }
+     */
+    private static class MyHostnameVerifier implements HostnameVerifier {
+        @Override
+        public boolean verify(String hostname, SSLSession session) {
+            return true;
+        }
+    }
+
+    private static class MyTrustManager implements X509TrustManager {
+
+        @Override
+        public void checkClientTrusted(X509Certificate[] chain, String authType) throws CertificateException {
+        }
+
+        @Override
+        public void checkServerTrusted(X509Certificate[] chain, String authType) throws
+                                                                                 CertificateException {
+        }
+
+        @Override
+        public X509Certificate[] getAcceptedIssuers() {
+            return null;
         }
     }
 }
