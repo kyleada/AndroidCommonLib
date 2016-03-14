@@ -1,11 +1,9 @@
-package com.kyle.commonlib.net;
+package me.kkwang.commonlib.net;
 
 import android.content.Context;
 import android.os.Build;
 import android.util.Log;
-import com.kyle.commonlib.BuildConfig;
-import com.kyle.commonlib.base.AppContextUtil;
-import com.kyle.commonlib.utils.NetUtils;
+
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -17,12 +15,17 @@ import java.security.cert.X509Certificate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+
 import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLSession;
 import javax.net.ssl.SSLSocketFactory;
 import javax.net.ssl.TrustManagerFactory;
 import javax.net.ssl.X509TrustManager;
+
+import me.kkwang.commonlib.BuildConfig;
+import me.kkwang.commonlib.base.AppContextUtil;
+import me.kkwang.commonlib.utils.NetUtils;
 import okhttp3.Authenticator;
 import okhttp3.Cache;
 import okhttp3.CacheControl;
